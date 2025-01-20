@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #153677, #4e085f);
+    padding: 10px;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+  }
+  
+
+.container {
+    background-color: aliceblue;
+    height: 500px;
+    margin: 100px 35%;
+    border-radius: 10px;
+    overflow-y: scroll;
+  -ms-overflow-style: none;
+}
+
+.container::-webkit-scrollbar {
+    display: none;
+  }
+
+.title {
+    color: #153677;
+    text-align: center;
+    padding: 30px;
+}
+
+.search-add {
+    display: flex;
+    margin-top: 30px;
+    gap: 10px;
+}
+
+#text-1 {
+    width: 360px;
+    height: 40px;
+    border-radius: 35px;
+    border: none;
+    padding-left: 20px;
+    outline: none;
+    background-color: rgb(244, 252, 255);
+}
+
+#submit-button {
+    border: none;
+    outline: none;
+    color: white;
+    background: #ff5459;
+    padding: 12px 40px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+ul li {
+    list-style: none;
+    font-size: 17px;
+    padding: 12px 8px 12px 50px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+}
+
+
+.list-container li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: default;
+}
+
+.list-container li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: default;
+}
+
+.list-container li.completed{
+    text-decoration: line-through;
+}
+
+.delete-icon {
+    margin-right: 10%;
+    cursor: pointer;
+}
+
+.check-icon {
+    position: absolute;
+    right: 18%;
+    cursor: pointer;
+}
+
+#clear-button{
+    border: none;
+    outline: none;
+    color: white;
+    background: #ff5459;
+    padding: 12px 40px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 15px;
+    display: block;
+    margin: 20px auto;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+      margin: 40px;
+    }
+    #text-1{
+        width: 90%;
+    }
+  }
+
+  @media screen and (min-width: 768px){
+.container{
+    display: none;
+}
+  }
