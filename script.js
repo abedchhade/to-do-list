@@ -1,5 +1,7 @@
 const inputbox = document.getElementById("text-1");
+const searchBar = document.getElementById("search-bar");
 const listContainer = document.getElementById("list-container");
+
 function addTask() {
     if (inputbox.value === '') {
         alert("The input box cannot be empty");
@@ -16,6 +18,7 @@ function addTask() {
             li.remove();
             saveTasks();
         });
+
         let check = document.createElement("span");
         check.innerHTML = '<i class="fa-regular fa-circle"></i>';
         check.classList.add("check-icon");
@@ -37,6 +40,7 @@ function addTask() {
     }
     inputbox.value = "";
 }
+
 function saveTasks() {
     const tasks = [];
     listContainer.querySelectorAll("li").forEach(li => {
@@ -47,6 +51,7 @@ function saveTasks() {
     });
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
+
 function displaySavedTasks() {
     const savedTasks = JSON.parse(localStorage.getItem("tasks"));
     if (savedTasks) {
@@ -92,3 +97,20 @@ function clearAll() {
     localStorage.removeItem("tasks");
 }
 
+
+function searchTasks() {
+    const searchValue = searchBar.value.toLowerCase();
+    const tasks = listContainer.querySelectorAll("li");
+
+    tasks.forEach(task => {
+        const taskText = task.firstChild.textContent.toLowerCase();
+        if (taskText.includes(searchValue)) {
+            task.style.display = "flex"; 
+        } else {
+            task.style.display = "none";
+        }
+    });
+}
+
+
+searchBar.addEventListener("input", searchTasks);
