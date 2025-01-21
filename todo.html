@@ -2,10 +2,12 @@
 <html>
 
 <head>
-  <meta content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>todo list</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -13,12 +15,15 @@
     <div class="title">
       <h2>To do list</h2>
       <div class="search-add">
+        <input id="search-bar" type="text" placeholder="Search Notes">
+      </div>
+      <div class="search-add">
         <input id="text-1" type="text" placeholder="Add Your Note">
         <button id="submit-button" type="submit" onclick="addTask()">Add</button>
       </div>
     </div>
     <ul id="list-container" class="list-container">
-      
+
       <!-- <li class="checked">Task 1</li>
       <li>Task 2</li>
       <li>Task 3</li>-->
