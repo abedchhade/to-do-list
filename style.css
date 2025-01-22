@@ -127,6 +127,32 @@ ul li {
     margin: 20px auto;
 }
 
+#status-filter {
+    border: none;
+    outline: none;
+    color: white;
+    background: #ff5459;
+    padding: 12px 40px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 15px;
+    appearance: none; 
+    text-align: center;
+    text-align-last: center; 
+    display: inline-block;
+}
+
+#status-filter option {
+    text-align: center;
+}
+
+.status-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px; 
+}
+
 @media screen and (max-width: 1024px) {
     .container {
         margin: 40px 30%; 

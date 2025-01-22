@@ -1,5 +1,6 @@
 const inputbox = document.getElementById("text-1");
 const searchBar = document.getElementById("search-bar");
+const statusFilter = document.getElementById("status-filter");
 const listContainer = document.getElementById("list-container");
 
 function addTask() {
@@ -7,7 +8,7 @@ function addTask() {
         alert("The input box cannot be empty");
     } else {
         let li = document.createElement("li");
-        li.innerHTML = inputbox.value;
+        li.innerHTML = `<span class="task-text">${inputbox.value}</span>`;
         listContainer.appendChild(li);
 
         let span = document.createElement("span");
@@ -45,7 +46,7 @@ function saveTasks() {
     const tasks = [];
     listContainer.querySelectorAll("li").forEach(li => {
         tasks.push({
-            text: li.firstChild.textContent,
+            text: li.querySelector(".task-text").textContent,
             completed: li.classList.contains("completed")
         });
     });
@@ -57,7 +58,7 @@ function displaySavedTasks() {
     if (savedTasks) {
         savedTasks.forEach(task => {
             let li = document.createElement("li");
-            li.innerHTML = task.text;
+            li.innerHTML = `<span class="task-text">${task.text}</span>`;
             if (task.completed) {
                 li.classList.add("completed");
             }
@@ -97,15 +98,27 @@ function clearAll() {
     localStorage.removeItem("tasks");
 }
 
-
 function searchTasks() {
     const searchValue = searchBar.value.toLowerCase();
-    const tasks = listContainer.querySelectorAll("li");
+    const filterStatus = statusFilter.value;
+    const tasks = listContainer.querySelectorAll("li")
+    if (searchValue.trim() === "") {
+        tasks.forEach(task => {
+            task.style.display = "flex";
+        });
+        return;
+    }
 
     tasks.forEach(task => {
-        const taskText = task.firstChild.textContent.toLowerCase();
-        if (taskText.includes(searchValue)) {
-            task.style.display = "flex"; 
+        const taskText = task.querySelector(".task-text").textContent.toLowerCase();
+        const isChecked = task.classList.contains("completed");    
+        const matchesSearch = taskText.includes(searchValue);
+        const matchesStatus =
+            filterStatus === "" || 
+            (filterStatus === "checked" && isChecked) || 
+            (filterStatus === "unchecked" && !isChecked);
+        if (matchesSearch && matchesStatus) {
+            task.style.display = "flex";
         } else {
             task.style.display = "none";
         }
@@ -114,3 +127,4 @@ function searchTasks() {
 
 
 searchBar.addEventListener("input", searchTasks);
+statusFilter.addEventListener("change", searchTasks);

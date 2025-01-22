@@ -16,18 +16,18 @@
       <h2>To do list</h2>
       <div class="search-add">
         <input id="search-bar" type="text" placeholder="Search Notes">
+        <select id="status-filter">
+          <option value="">All</option>
+          <option value="checked">Checked</option>
+          <option value="unchecked">Unchecked</option>
+        </select>
       </div>
       <div class="search-add">
         <input id="text-1" type="text" placeholder="Add Your Note">
         <button id="submit-button" type="submit" onclick="addTask()">Add</button>
       </div>
     </div>
-    <ul id="list-container" class="list-container">
-
-      <!-- <li class="checked">Task 1</li>
-      <li>Task 2</li>
-      <li>Task 3</li>-->
-    </ul>
+    <ul id="list-container" class="list-container"></ul>
     <button type="submit" id="clear-button" onclick="clearAll()">Clear all</button>
   </div>
   <script src="script.js"></script>
