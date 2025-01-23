@@ -2,7 +2,7 @@ const inputbox = document.getElementById("text-1");
 const searchBar = document.getElementById("search-bar");
 const statusFilter = document.getElementById("status-filter");
 const listContainer = document.getElementById("list-container");
-
+const add =document.getElementById("submit-button");
 function addTask() {
     if (inputbox.value === '') {
         alert("The input box cannot be empty");
@@ -10,15 +10,29 @@ function addTask() {
         let li = document.createElement("li");
         li.innerHTML = `<span class="task-text">${inputbox.value}</span>`;
         listContainer.appendChild(li);
-
+        let span_edit = document.createElement("span");
+        span_edit.innerHTML = '<i class="fa-solid fa-pen"></i>';
+        span_edit.classList.add("edit-icon");
+        li.appendChild(span_edit);
+       
         let span = document.createElement("span");
         span.innerHTML = '<i class="fa-solid fa-trash"></i>';
         span.classList.add("delete-icon");
         li.appendChild(span);
+        saveTasks();
+
+        span_edit.addEventListener('click',()=>{
+           span_edit.parentNode.remove();
+           inputbox.value=prompt("what is your new task?");
+           addTask();
+           saveTasks();});
+        
+
         span.addEventListener("click", function () {
             li.remove();
             saveTasks();
         });
+       
 
         let check = document.createElement("span");
         check.innerHTML = '<i class="fa-regular fa-circle"></i>';
@@ -41,6 +55,8 @@ function addTask() {
     }
     inputbox.value = "";
 }
+
+
 
 function saveTasks() {
     const tasks = [];
@@ -126,5 +142,8 @@ function searchTasks() {
 }
 
 
+
+
 searchBar.addEventListener("input", searchTasks);
 statusFilter.addEventListener("change", searchTasks);
+add.addEventListener("click",addTask);

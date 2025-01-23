@@ -92,13 +92,6 @@ ul li {
     cursor: default;
 }
 
-.list-container li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: default;
-}
-
 .list-container li.completed{
     text-decoration: line-through;
 }
@@ -107,10 +100,15 @@ ul li {
     margin-right: 10%;
     cursor: pointer;
 }
+.edit-icon{
+    position: absolute;
+    right: 22%;
+    cursor: pointer;
+}
 
 .check-icon {
     position: absolute;
-    right: 18%;
+    right: 16%;
     cursor: pointer;
 }
 
